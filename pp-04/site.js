@@ -4,15 +4,13 @@
   `x` as the variable inside the function, however.
 */
 
-x = 5;
-
+var x = 5;
+/*
 function double(num) {
   x = num * 2;
   return x;
 }
-
-double(6);
-console.log('The value of x is', x, '-- it should be 5.');
+*/
 
 /*
   Step 2. Rewrite the JavaScript `double()` function above so that
@@ -24,9 +22,27 @@ console.log('The value of x is', x, '-- it should be 5.');
   can accurately test your work.
 */
 
+var double = function(num){
+  var x = num * 2;
+  return x;
+};
 
 /*
   Step 3. Rewrite your corrected `double()` function from Step 2.
   so that non-number values passed into the function are handled
   in some reasonable way.
 */
+
+var double = function(num) {
+  if (typeof(num) === 'number') {
+    var x = num * 2;
+    return x;
+  }
+  return `ERROR: That is not a number`;
+};
+
+var testSuccess = double(6);
+console.log(`The double funtion with a number returns:`, testSuccess);
+var testFail = double("hello world");
+console.log(`The double funtion with something other than a number returns:`, testFail);
+console.log('The value of x is', x, '-- it should be 5.');
